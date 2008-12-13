@@ -23,7 +23,7 @@ def read(*rnames):
 
 setup (
     name='z3c.breadcrumb',
-    version='1.0.3dev',
+    version='1.0.3',
     author = "Roger Ineichen,Stephan Richter and the Zope Community",
     author_email = "zope3-dev@zope.org",
     description = "A pluggable breadcrumbs implementation based on adapters.",
@@ -49,17 +49,16 @@ setup (
         'Operating System :: OS Independent',
         'Topic :: Internet :: WWW/HTTP',
         'Framework :: Zope3'],
-    url = 'http://svn.zope.org/z3c.breadcrumb',
+    url = 'http://pypi.python.org/pypi/z3c.breadcrumb',
     packages = find_packages('src'),
     include_package_data = True,
     package_dir = {'':'src'},
     namespace_packages = ['z3c'],
     extras_require = dict(
-        test = ['zope.testing'],
+        test = ['zope.app.testing'],
         ),
     install_requires = [
         'setuptools',
-        'zope.app.component',
         'zope.component',
         'zope.interface',
         'zope.location',
