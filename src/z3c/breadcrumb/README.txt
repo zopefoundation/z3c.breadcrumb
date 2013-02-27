@@ -13,7 +13,7 @@ Let's do some imports we will use later.
   >>> from zope.publisher.interfaces.http import IHTTPRequest
   >>> from zope.publisher.browser import TestRequest
   >>> from zope.traversing.browser import absoluteURL
-  >>> from zope.app.container import contained
+  >>> from zope.container import contained
   >>> from z3c.breadcrumb import interfaces
   >>> from z3c.breadcrumb import browser
 
@@ -26,8 +26,8 @@ Let's define a interface and a content object.
   >>> class IOffice(zope.interface.Interface):
   ...     """Office interface."""
 
-  >>> class Office(contained.Contained):
-  ...     zope.interface.implements(IOffice)
+  >>> @zope.interface.implementer(IOffice)
+  ... class Office(contained.Contained):
   ...     def __init__(self, label):
   ...         self.label = label
   ...         self.activeURL = True
@@ -53,9 +53,9 @@ And see what we get:
 We can also implement a custom ``IBreadcrumb`` adapter and provide another
 name for the breadcrumb name:
 
-  >>> class BreadcrumbForOffice(object):
-  ...     zope.interface.implements(interfaces.IBreadcrumb)
-  ...     zope.component.adapts(IOffice, IHTTPRequest)
+  >>> @zope.interface.implementer(interfaces.IBreadcrumb)
+  ... @zope.component.adapter(IOffice, IHTTPRequest)
+  ... class BreadcrumbForOffice(object):
   ...
   ...     def __init__(self, context, request):
   ...         self.context = context
@@ -93,8 +93,9 @@ Let's define another interface and a content object.
   >>> class IOfficeContainer(zope.interface.Interface):
   ...     """Container of offices."""
 
-  >>> class OfficeContainer(contained.Contained):
-  ...     zope.interface.implements(IOfficeContainer)
+  >>> @zope.interface.implementer(IOfficeContainer)
+  ... class OfficeContainer(contained.Contained):
+  ...     pass
 
   >>> offices = OfficeContainer()
   >>> offices.__name__ = u'offices'
@@ -139,13 +140,14 @@ adapter:
 
   >>> breadcrumbs = zope.component.getMultiAdapter((office, request),
   ...     interfaces.IBreadcrumbs)
-  >>> list(breadcrumbs.crumbs)
-  [{'url': 'http://127.0.0.1',
-    'activeURL': True,
-    'name': 'top'},
-   {'url': 'http://127.0.0.1/office',
-    'activeURL': True,
-    'name': u'Zope Foundation'}]
+  >>> from pprint import pprint
+  >>> pprint(list(breadcrumbs.crumbs))
+  [{'activeURL': True,
+    'name': 'top',
+    'url': 'http://127.0.0.1'},
+   {'activeURL': True,
+    'name': 'Zope Foundation',
+    'url': 'http://127.0.0.1/office'}]
 
   >>> breadcrumbs.__parent__ is office
   True
@@ -153,8 +155,10 @@ adapter:
 Default breadcrumbs stops on virtual host root
 
   >>> request._vh_root = office
-  >>> list(breadcrumbs.crumbs)
-  [{'url': 'http://127.0.0.1', 'activeURL': True, 'name': u'Zope Foundation'}]
+  >>> pprint(list(breadcrumbs.crumbs))
+  [{'activeURL': True,
+    'name': 'Zope Foundation',
+    'url': 'http://127.0.0.1'}]
 
 If the breadcrumb of an item is a Null-adapter, then the item is ignored.
 
@@ -167,7 +171,7 @@ If the breadcrumb of an item is a Null-adapter, then the item is ignored.
   >>> request = TestRequest()
   >>> breadcrumbs = zope.component.getMultiAdapter(
   ...     (office, request), interfaces.IBreadcrumbs)
-  >>> list(breadcrumbs.crumbs)
-  [{'url': 'http://127.0.0.1/office',
-    'activeURL': True,
-    'name': u'Zope Foundation'}]
+  >>> pprint(list(breadcrumbs.crumbs))
+  [{'activeURL': True,
+    'name': 'Zope Foundation',
+    'url': 'http://127.0.0.1/office'}]

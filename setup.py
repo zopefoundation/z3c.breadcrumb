@@ -12,8 +12,6 @@
 #
 ##############################################################################
 """Setup
-
-$Id$
 """
 import os
 from setuptools import setup, find_packages
@@ -40,25 +38,33 @@ setup (
     license = "ZPL 2.1",
     keywords = "zope3 breadcrumb adapter",
     classifiers = [
-        'Development Status :: 4 - Beta',
-        'Environment :: Web Environment',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Zope Public License',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: Implementation :: CPython',
         'Natural Language :: English',
         'Operating System :: OS Independent',
+        'Environment :: Web Environment',
         'Topic :: Internet :: WWW/HTTP',
         'Framework :: Zope3'],
     url = 'http://pypi.python.org/pypi/z3c.breadcrumb',
     packages = find_packages('src'),
-    include_package_data = True,
     package_dir = {'':'src'},
     namespace_packages = ['z3c'],
     extras_require = dict(
-        test = ['zope.app.testing',
-                'zope.app.container'],
+        test = [
+            'zope.container',
+            'zope.site',
+            'zope.testing',
+            ],
         ),
-    install_requires = [
+    install_requires=[
         'setuptools',
         'zope.component',
         'zope.interface',
@@ -67,6 +73,11 @@ setup (
         'zope.schema',
         'zope.traversing',
         ],
-    dependency_links = ['http://download.zope.org/distribution'],
+    tests_require=[
+        'zope.container',
+        'zope.site',
+        'zope.testing'],
+    test_suite='z3c.breadcrumb.tests.test_suite',
+    include_package_data = True,
     zip_safe = False,
     )

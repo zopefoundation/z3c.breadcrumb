@@ -11,11 +11,8 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+"""Interfaces
 """
-$Id: __init__.py 70825 2006-10-20 01:34:05Z rogerineichen $
-"""
-__docformat__ = 'reStructuredText'
-
 import zope.interface
 import zope.schema
 

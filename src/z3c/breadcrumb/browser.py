@@ -11,11 +11,8 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+"""Browser UI code.
 """
-$Id: __init__.py 70825 2006-10-20 01:34:05Z rogerineichen $
-"""
-__docformat__ = 'reStructuredText'
-
 import zope.component
 import zope.interface
 import zope.location
@@ -28,9 +25,9 @@ from zope.traversing.interfaces import IContainmentRoot
 from z3c.breadcrumb import interfaces
 
 
+@zope.interface.implementer(interfaces.IBreadcrumbs)
 class Breadcrumbs(zope.location.Location):
     """Breadcrumbs implementation using IBreadcrumb adapters."""
-    zope.interface.implements(interfaces.IBreadcrumbs)
     zope.component.adapts(zope.interface.Interface, IHTTPRequest)
 
     def __init__(self, context, request):
@@ -69,9 +66,9 @@ class Breadcrumbs(zope.location.Location):
                    'activeURL': info.activeURL}
 
 
+@zope.interface.implementer(interfaces.IBreadcrumb)
 class GenericBreadcrumb(object):
     """A generic breadcrumb adapter."""
-    zope.interface.implements(interfaces.IBreadcrumb)
     zope.component.adapts(zope.interface.Interface, IHTTPRequest)
 
     # See interfaces.IBreadcrumb

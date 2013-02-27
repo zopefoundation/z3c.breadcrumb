@@ -11,11 +11,25 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-from zope.app.testing import setup
+"""Tests
+"""
+import doctest
+import re
+import unittest
+import zope.location
+import zope.site.testing
+import zope.traversing.testing
 from zope.interface.verify import verifyObject
 from zope.publisher.browser import TestRequest
-import doctest
-import unittest
+from zope.testing import renormalizing
+
+checker = renormalizing.RENormalizing([
+    # Python 3 unicode removed the "u".
+    (re.compile("u('.*?')"),
+     r"\1"),
+    (re.compile('u(".*?")'),
+     r"\1"),
+    ])
 
 
 def doctest_Breadcrumbs_interface():
@@ -41,19 +55,20 @@ def doctest_GenericBreadcrumb_interface():
 
 
 def setUp(test):
-    site = setup.placefulSetUp(site=True)
+    site = zope.site.testing.siteSetUp(True)
+    zope.traversing.testing.setUp()
     test.globs['rootFolder'] = site
 
 def tearDown(test):
-    setup.placefulTearDown()
-
+    zope.site.testing.siteTearDown()
 
 def test_suite():
     return unittest.TestSuite([
             doctest.DocFileSuite(
                 'README.txt',
                 setUp=setUp, tearDown=tearDown,
-                optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS),
+                optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS,
+                checker=checker),
             doctest.DocTestSuite(
-                setUp=setUp, tearDown=tearDown),
+                setUp=setUp, tearDown=tearDown, checker=checker),
             ])
