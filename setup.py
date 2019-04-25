@@ -55,7 +55,7 @@ setup (
         'Topic :: Internet :: WWW/HTTP',
         'Framework :: Zope :: 3',
     ],
-    url = 'http://pypi.python.org/pypi/z3c.breadcrumb',
+    url = 'https://github.com/zopefoundation/z3c.breadcrumb',
     packages = find_packages('src'),
     package_dir = {'':'src'},
     namespace_packages = ['z3c'],
