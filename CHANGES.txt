@@ -5,7 +5,9 @@ CHANGES
 2.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added support for Python 3.5, 3.6, and 3.7.
+
+- Dropped support for Python 2.6, 3.3, and 3.4.
 
 
 2.0.0 (2015-11-09)
@@ -37,11 +39,13 @@ CHANGES
 - Using Python's ``doctest`` module instead of depreacted
   ``zope.testing.doctest``.
 
+
 1.1.0 (2009-05-29)
 ------------------
 
 - Feature: Added ability to register a Null-adapter as a breadcrumb. A
   null-breadcrumb will cause the item not to be displayed in the breadcrumbs.
+
 
 1.0.3 (2008-12-13)
 ------------------
