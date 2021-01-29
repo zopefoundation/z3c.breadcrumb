@@ -48,8 +48,8 @@ class Breadcrumbs(zope.location.Location):
         request = self.request
 
         objects = []
-        for obj in ( [self.context] +
-                     list(zope.traversing.api.getParents(self.context)) ):
+        for obj in ([self.context] +
+                    list(zope.traversing.api.getParents(self.context))):
             objects.append(obj)
             if sameProxiedObjects(obj, request.getVirtualHostRoot()) or \
                     isinstance(obj, Exception):
@@ -95,5 +95,5 @@ class GenericBreadcrumb(object):
 
 
 def CustomNameBreadcrumb(name):
-    return type('CustomNameBreadcrumb(%r)' %name,
+    return type('CustomNameBreadcrumb(%r)' % name,
                 (GenericBreadcrumb,), {'name': name})

@@ -45,4 +45,3 @@ class IBreadcrumb(zope.interface.Interface):
         description=u'Tells whether the breadcrumb link should be active.',
         required=True,
         default=True)
-
