@@ -51,7 +51,7 @@ def doctest_GenericBreadcrumb_interface():
         >>> verifyObject(interfaces.IBreadcrumb, breadcrumb)
         True
 
-    """  # noqa: F821 undefined name 'rootFolder'
+    """
 
 
 def setUp(test):
