@@ -16,15 +16,17 @@
 import os
 from setuptools import setup, find_packages
 
+
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-setup (
+
+setup(
     name='z3c.breadcrumb',
-    version='2.0.1.dev0',
-    author = "Roger Ineichen,Stephan Richter and the Zope Community",
-    author_email = "zope3-dev@zope.org",
-    description = "A pluggable breadcrumbs implementation based on adapters.",
+    version='2.1.0.dev0',
+    author="Roger Ineichen, Stephan Richter and the Zope Community",
+    author_email="zope3-dev@zope.org",
+    description="A pluggable breadcrumbs implementation based on adapters.",
     long_description=(
         read('README.txt')
         + '\n\n' +
@@ -34,10 +36,10 @@ setup (
         read('src', 'z3c', 'breadcrumb', 'README.txt')
         + '\n\n' +
         read('CHANGES.txt')
-        ),
-    license = "ZPL 2.1",
-    keywords = "zope3 breadcrumb adapter",
-    classifiers = [
+    ),
+    license="ZPL 2.1",
+    keywords="zope3 breadcrumb adapter",
+    classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Zope Public License',
@@ -48,6 +50,8 @@ setup (
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: Implementation :: CPython',
         'Natural Language :: English',
         'Operating System :: OS Independent',
@@ -55,17 +59,17 @@ setup (
         'Topic :: Internet :: WWW/HTTP',
         'Framework :: Zope :: 3',
     ],
-    url = 'https://github.com/zopefoundation/z3c.breadcrumb',
-    packages = find_packages('src'),
-    package_dir = {'':'src'},
-    namespace_packages = ['z3c'],
-    extras_require = dict(
-        test = [
+    url='https://github.com/zopefoundation/z3c.breadcrumb',
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
+    namespace_packages=['z3c'],
+    extras_require=dict(
+        test=[
             'zope.container',
             'zope.site',
             'zope.testing',
-            ],
-        ),
+        ],
+    ),
     install_requires=[
         'setuptools',
         'zope.component',
@@ -74,12 +78,12 @@ setup (
         'zope.publisher',
         'zope.schema',
         'zope.traversing',
-        ],
+    ],
     tests_require=[
         'zope.container',
         'zope.site',
         'zope.testing'],
     test_suite='z3c.breadcrumb.tests.test_suite',
-    include_package_data = True,
-    zip_safe = False,
-    )
+    include_package_data=True,
+    zip_safe=False,
+)

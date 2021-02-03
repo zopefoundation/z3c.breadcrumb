@@ -29,7 +29,7 @@ checker = renormalizing.RENormalizing([
      r"\1"),
     (re.compile('u(".*?")'),
      r"\1"),
-    ])
+])
 
 
 def doctest_Breadcrumbs_interface():
@@ -59,16 +59,18 @@ def setUp(test):
     zope.traversing.testing.setUp()
     test.globs['rootFolder'] = site
 
+
 def tearDown(test):
     zope.site.testing.siteTearDown()
 
+
 def test_suite():
     return unittest.TestSuite([
-            doctest.DocFileSuite(
-                'README.txt',
-                setUp=setUp, tearDown=tearDown,
-                optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS,
-                checker=checker),
-            doctest.DocTestSuite(
-                setUp=setUp, tearDown=tearDown, checker=checker),
-            ])
+        doctest.DocFileSuite(
+            'README.txt',
+            setUp=setUp, tearDown=tearDown,
+            optionflags=doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS,
+            checker=checker),
+        doctest.DocTestSuite(
+            setUp=setUp, tearDown=tearDown, checker=checker),
+    ])

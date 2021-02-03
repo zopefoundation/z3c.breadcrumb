@@ -1,0 +1,20 @@
+# Generated from:
+# https://github.com/zopefoundation/meta/tree/master/config/pure-python
+[meta]
+template = "pure-python"
+commit-id = "dff30b80f91fd1b4e68f2a73f7de721d9559de17"
+
+[python]
+with-appveyor = false
+with-pypy = false
+with-legacy-python = true
+with-docs = false
+with-sphinx-doctests = false
+
+[coverage]
+fail-under = 99
+
+[flake8]
+additional-config = [
+    "builtins = rootFolder",
+    ]
