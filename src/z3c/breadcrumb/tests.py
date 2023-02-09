@@ -16,12 +16,14 @@
 import doctest
 import re
 import unittest
+
 import zope.location
 import zope.site.testing
 import zope.traversing.testing
 from zope.interface.verify import verifyObject
 from zope.publisher.browser import TestRequest
 from zope.testing import renormalizing
+
 
 checker = renormalizing.RENormalizing([
     # Python 3 unicode removed the "u".
