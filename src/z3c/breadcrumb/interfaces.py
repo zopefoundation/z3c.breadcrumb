@@ -31,17 +31,17 @@ class IBreadcrumb(zope.interface.Interface):
     """Provides pieces of breadcrumb information about a item."""
 
     name = zope.schema.TextLine(
-        title=u'Name',
-        description=u'The name of the breadcrumb.',
+        title='Name',
+        description='The name of the breadcrumb.',
         required=True)
 
     url = zope.schema.URI(
-        title=u'URL',
-        description=u'The url of the breadcrumb.',
+        title='URL',
+        description='The url of the breadcrumb.',
         required=True)
 
     activeURL = zope.schema.Bool(
-        title=u'Active',
-        description=u'Tells whether the breadcrumb link should be active.',
+        title='Active',
+        description='Tells whether the breadcrumb link should be active.',
         required=True,
         default=True)

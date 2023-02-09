@@ -14,7 +14,6 @@
 """Tests
 """
 import doctest
-import re
 import unittest
 
 import zope.location
@@ -22,16 +21,6 @@ import zope.site.testing
 import zope.traversing.testing
 from zope.interface.verify import verifyObject
 from zope.publisher.browser import TestRequest
-from zope.testing import renormalizing
-
-
-checker = renormalizing.RENormalizing([
-    # Python 3 unicode removed the "u".
-    (re.compile("u('.*?')"),
-     r"\1"),
-    (re.compile('u(".*?")'),
-     r"\1"),
-])
 
 
 def doctest_Breadcrumbs_interface():
@@ -71,8 +60,6 @@ def test_suite():
         doctest.DocFileSuite(
             'README.txt',
             setUp=setUp, tearDown=tearDown,
-            optionflags=doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS,
-            checker=checker),
-        doctest.DocTestSuite(
-            setUp=setUp, tearDown=tearDown, checker=checker),
+            optionflags=doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS),
+        doctest.DocTestSuite(setUp=setUp, tearDown=tearDown),
     ])

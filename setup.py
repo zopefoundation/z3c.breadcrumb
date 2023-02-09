@@ -27,7 +27,7 @@ setup(
     name='z3c.breadcrumb',
     version='3.0.dev0',
     author="Roger Ineichen, Stephan Richter and the Zope Community",
-    author_email="zope3-dev@zope.org",
+    author_email="zope-dev@zope.dev",
     description="A pluggable breadcrumbs implementation based on adapters.",
     long_description=(
         read('README.txt')
@@ -63,6 +63,7 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     namespace_packages=['z3c'],
+    python_requires='>=3.7',
     extras_require=dict(
         test=[
             'zope.container',

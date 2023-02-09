@@ -32,8 +32,8 @@ Let's define a interface and a content object.
   ...         self.label = label
   ...         self.activeURL = True
 
-  >>> office = Office(u'Zope Foundation')
-  >>> office.__name__ = u'ZF'
+  >>> office = Office('Zope Foundation')
+  >>> office.__name__ = 'ZF'
 
 There is a generic breadcrumb implementation which is registered by
 default. If we do not implement a custom IBreadcrumb the generic adapter will
@@ -48,7 +48,7 @@ And see what we get:
   >>> breadcrumb = zope.component.getMultiAdapter((office, request),
   ...     interfaces.IBreadcrumb)
   >>> breadcrumb.name
-  u'ZF'
+  'ZF'
 
 We can also implement a custom ``IBreadcrumb`` adapter and provide another
 name for the breadcrumb name:
@@ -82,7 +82,7 @@ And check the new breadcrumb name:
   >>> breadcrumb = zope.component.getMultiAdapter((office, request),
   ...     interfaces.IBreadcrumb)
   >>> breadcrumb.name
-  u'Zope Foundation'
+  'Zope Foundation'
 
 
 CustomNameBreadcrumb
@@ -98,23 +98,23 @@ Let's define another interface and a content object.
   ...     pass
 
   >>> offices = OfficeContainer()
-  >>> offices.__name__ = u'offices'
+  >>> offices.__name__ = 'offices'
 
 If the custom name for this kind of object is always the same it would quickly
 get tedious to write a full IBreadcrumb implementation.  As a shortcut you
 can use CustomNameBreadcrumb to get an adapter that acts like
 GenericBreadcrumb, but returns the name you want.
 
-  >>> adapter = browser.CustomNameBreadcrumb(u'Offices')
+  >>> adapter = browser.CustomNameBreadcrumb('Offices')
   >>> adapter
-  <class 'z3c.breadcrumb.browser.CustomNameBreadcrumb(u'Offices')'>
+  <class 'z3c.breadcrumb.browser.CustomNameBreadcrumb('Offices')'>
   >>> zope.component.provideAdapter(adapter,
   ...     adapts=(IOfficeContainer, IHTTPRequest))
 
   >>> breadcrumb = zope.component.getMultiAdapter((offices, request),
   ...     interfaces.IBreadcrumb)
   >>> breadcrumb.name
-  u'Offices'
+  'Offices'
 
 
 IBreadcrumbs

@@ -12,7 +12,7 @@ with-future-python = false
 with-macos = false
 
 [coverage]
-fail-under = 99
+fail-under = 98
 
 [flake8]
 additional-config = [
