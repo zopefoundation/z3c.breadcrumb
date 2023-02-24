@@ -67,7 +67,7 @@ class Breadcrumbs(zope.location.Location):
 
 
 @zope.interface.implementer(interfaces.IBreadcrumb)
-class GenericBreadcrumb(object):
+class GenericBreadcrumb:
     """A generic breadcrumb adapter."""
     zope.component.adapts(zope.interface.Interface, IHTTPRequest)
 
