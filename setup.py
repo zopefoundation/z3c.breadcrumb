@@ -39,7 +39,7 @@ setup(
         + '\n\n' +
         read('CHANGES.txt')
     ),
-    license="ZPL 2.1",
+    license="ZPL-2.1",
     keywords="zope3 breadcrumb adapter",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -47,11 +47,11 @@ setup(
         'License :: OSI Approved :: Zope Public License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
         'Programming Language :: Python :: Implementation :: CPython',
         'Natural Language :: English',
         'Operating System :: OS Independent',
@@ -63,7 +63,7 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     namespace_packages=['z3c'],
-    python_requires='>=3.7',
+    python_requires='>=3.9',
     extras_require=dict(
         test=[
             'zope.container',
@@ -80,11 +80,6 @@ setup(
         'zope.schema',
         'zope.traversing',
     ],
-    tests_require=[
-        'zope.container',
-        'zope.site',
-        'zope.testing'],
-    test_suite='z3c.breadcrumb.tests.test_suite',
     include_package_data=True,
     zip_safe=False,
 )
