@@ -25,7 +25,7 @@ def read(*rnames):
 
 setup(
     name='z3c.breadcrumb',
-    version='3.1',
+    version='3.2.dev0',
     author="Roger Ineichen, Stephan Richter and the Zope Community",
     author_email="zope-dev@zope.dev",
     description="A pluggable breadcrumbs implementation based on adapters.",
