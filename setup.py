@@ -15,7 +15,6 @@
 """
 import os
 
-from setuptools import find_packages
 from setuptools import setup
 
 
@@ -60,9 +59,6 @@ setup(
         'Framework :: Zope :: 3',
     ],
     url='https://github.com/zopefoundation/z3c.breadcrumb',
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
-    namespace_packages=['z3c'],
     python_requires='>=3.9',
     extras_require=dict(
         test=[
