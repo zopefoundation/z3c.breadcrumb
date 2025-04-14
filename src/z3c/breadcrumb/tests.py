@@ -11,8 +11,8 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-"""Tests
-"""
+"""Tests"""
+
 import doctest
 import unittest
 
@@ -26,10 +26,10 @@ from zope.publisher.browser import TestRequest
 def doctest_Breadcrumbs_interface():
     """Test that Breadcrumbs matches the interface
 
-        >>> from z3c.breadcrumb import browser, interfaces
-        >>> breadcrumbs = browser.Breadcrumbs(None, None)
-        >>> verifyObject(interfaces.IBreadcrumbs, breadcrumbs)
-        True
+    >>> from z3c.breadcrumb import browser, interfaces
+    >>> breadcrumbs = browser.Breadcrumbs(None, None)
+    >>> verifyObject(interfaces.IBreadcrumbs, breadcrumbs)
+    True
 
     """
 
@@ -37,10 +37,10 @@ def doctest_Breadcrumbs_interface():
 def doctest_GenericBreadcrumb_interface():
     """Test that GenericBreadcrumb matches the interface
 
-        >>> from z3c.breadcrumb import browser, interfaces
-        >>> breadcrumb = browser.GenericBreadcrumb(rootFolder, TestRequest())
-        >>> verifyObject(interfaces.IBreadcrumb, breadcrumb)
-        True
+    >>> from z3c.breadcrumb import browser, interfaces
+    >>> breadcrumb = browser.GenericBreadcrumb(rootFolder, TestRequest())
+    >>> verifyObject(interfaces.IBreadcrumb, breadcrumb)
+    True
 
     """
 
@@ -48,7 +48,7 @@ def doctest_GenericBreadcrumb_interface():
 def setUp(test):
     site = zope.site.testing.siteSetUp(True)
     zope.traversing.testing.setUp()
-    test.globs['rootFolder'] = site
+    test.globs["rootFolder"] = site
 
 
 def tearDown(test):
@@ -56,10 +56,14 @@ def tearDown(test):
 
 
 def test_suite():
-    return unittest.TestSuite([
-        doctest.DocFileSuite(
-            'README.txt',
-            setUp=setUp, tearDown=tearDown,
-            optionflags=doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS),
-        doctest.DocTestSuite(setUp=setUp, tearDown=tearDown),
-    ])
+    return unittest.TestSuite(
+        [
+            doctest.DocFileSuite(
+                "README.rst",
+                setUp=setUp,
+                tearDown=tearDown,
+                optionflags=doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS,
+            ),
+            doctest.DocTestSuite(setUp=setUp, tearDown=tearDown),
+        ]
+    )
